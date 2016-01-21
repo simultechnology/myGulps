@@ -1,0 +1,27 @@
+
+body {
+  background: slategray;
+}
+
+#eyecatch {
+  background: url("../img/eyecatch.jpg") no-repeat;
+  background-size: cover;
+}
+
+header {
+  background: tomato;
+}
+
+main {
+  background: skyblue;
+}
+
+footer {
+  /*background: slategray;*/
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+  /*background: pink;*/
+}
