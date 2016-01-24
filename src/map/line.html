@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Leaflet</title>
+  <title>Sample</title>
   <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
   <script src="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
   <script src="//maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
@@ -132,7 +132,6 @@
 
   function addPoiToMap(url) {
 
-
     for (var i = 0; i < lavatories.length; i++) {
       map.removeLayer(lavatories[i]);
     }
@@ -150,7 +149,6 @@
               lavatories.push(lMarker);
             }
           }
-
         });
   }
 
@@ -300,8 +298,6 @@
         polylines.push(polyline);
       }
     }
-
-
   }
 
   drawLines(map);
@@ -318,7 +314,7 @@
   });
 
   map.on('click', function(e) {
-    console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+    console.log("[" + e.latlng.lat + ", " + e.latlng.lng + "],");
   });
 
   map.on('moveend', function() {
