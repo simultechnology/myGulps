@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0058)http://202.217.72.54:10085/alpha2/OpenLayers_20151030.html -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>OpenLayers SampleMap</title>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="./OpenLayers SampleMap_files/ol.css" type="text/css">
+		<style type="text/css">
+		<!--
+		-->
+		</style>
+
+		<script type="text/javascript" src="./OpenLayers SampleMap_files/jquery.min.js"></script>
+		<script src="./OpenLayers SampleMap_files/ol.js" type="text/javascript"></script>
+		<script type="text/javascript">
+
+			var rasterLayer;
+			var undergroundRasterLayer;
+			var indoorLayer;
+			var blackLayer;
+			var osmLayer;
+			var stdLayer;
+			var gazo4Layer;
+
+			$(function() {
+
+				//View
+				var view = new ol.View({
+					center	: 	ol.proj.fromLonLat([139.764300, 35.682000]),
+					zoom	:	18
+				});
+
+				//2015年度版ラスタレイヤ
+				rasterLayer = new ol.layer.Tile({
+					title	:	"2015年度版ラスタレイヤ",
+					source	:	new ol.source.XYZ({
+						attributions	:	[ new ol.Attribution({ html: "<a href='http://www.goo.ne.jp/' target='_blank'>ラスタ地図</a>" }) ],
+						url				:	"http://202.217.72.54:10085/con00-cgi/getRaster/1.0.0/2015RASP1/default/EPSG3857/{z}/{y}/{x}.png"
+					})
+				});
+
+				//地下街ラスタレイヤ
+				indoorLayer = new ol.layer.Tile({
+					title	:	"地下街ラスタレイヤ",
+					source	:	new ol.source.XYZ({
+						attributions	:	[ new ol.Attribution({ html: "<a href='http://www.goo.ne.jp/' target='_blank'>地下街ラスタ</a>" }) ],
+						url				:	"http://202.217.72.54:10085/con00-cgi/getRaster/1.0.0/NAVI1TB1/default/EPSG3857/{z}/{y}/{x}.png"
+					})
+				});
+
+
+				//blackラスタレイヤ
+				blackLayer = new ol.layer.Tile({
+					title	:	"地下街ラスタレイヤ",
+					source	:	new ol.source.XYZ({
+						attributions	:	[ new ol.Attribution({ html: "<a href='http://www.goo.ne.jp/' target='_blank'>地下街ラスタ</a>" }) ],
+						url				:	"http://202.217.72.54:10085/con00-cgi/getRaster/1.0.0/BLACK/default/EPSG3857/{z}/{y}/{x}.png"
+					})
+				});
+
+
+				//OSM
+				osmLayer = new ol.layer.Tile({
+					title	:	"OSM",
+					source	:	new ol.source.OSM()
+				});
+
+				//国土地理院(ラスタレイヤ)
+				stdLayer = new ol.layer.Tile({
+					title	:	"国土地理院(ラスタレイヤ)",
+					source	:	new ol.source.XYZ({
+						attributions	:	[ new ol.Attribution({ html: "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>国土地理院</a>" }) ],
+						url				:	"http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png",
+						projection		:	"EPSG:3857"
+					})
+				});
+
+				//国土地理院(航空レイヤ) => 未使用
+				gazo4Layer = new ol.layer.Tile({
+					title	:	"国土地理院(航空レイヤ)",
+					source	:	new ol.source.XYZ({
+						attributions	:	[new ol.Attribution({html: "地理院タイル（国土画像情報（第四期：1988～1990年撮影））"})],
+						url				:	"http://cyberjapandata.gsi.go.jp/xyz/gazo4/{z}/{x}/{y}.jpg",
+						projection		:	"EPSG:3857"
+					})
+				});
+
+				//Map
+				var map = new ol.Map({
+					target	:	'map-canvas',
+					view	:	view,
+					layers	:	[rasterLayer, osmLayer, stdLayer,indoorLayer,blackLayer]
+				});
+
+				//デフォルト表示レイヤ
+				rasterLayer.setVisible(true);
+				//rasterLayer.setVisible(false);
+				blackLayer.setVisible(true);
+				osmLayer.setVisible(false);
+				stdLayer.setVisible(false);
+				indoorLayer.setVisible(true);
+
+
+			});
+
+                        /*
+			$(document).on("click","#map-change-icon", function() {
+				console.debug("map-change start." + $("#map-change-icon").attr("title"));
+
+				if ($("#map-change-icon").attr("title") === "OSM") {
+					document.getElementById("map-change-icon").title = "国土地理院";
+					rasterLayer.setVisible(false);
+					osmLayer.setVisible(true);
+					stdLayer.setVisible(false);
+				} else if ($("#map-change-icon").attr("title") === "国土地理院") {
+					document.getElementById("map-change-icon").title = "ラスタ";
+					rasterLayer.setVisible(false);
+					osmLayer.setVisible(false);
+					stdLayer.setVisible(true);
+				} else if ($("#map-change-icon").attr("title") === "ラスタ") {
+					document.getElementById("map-change-icon").title = "OSM";
+					rasterLayer.setVisible(true);
+					osmLayer.setVisible(false);
+					stdLayer.setVisible(false);
+				}
+
+			});
+                        */
+
+		</script>
+
+	</head>
+	<body>
+		<div id="map-contents">
+			<div id="map-canvas" style="position:absolute; left:0px; top:0px; z-index:0; width:800px; height:600px;"><div class="ol-viewport" style="position: relative; overflow: hidden; width: 100%; height: 100%;"><canvas class="ol-unselectable" width="2000" height="1500" style="width: 100%; height: 100%;"></canvas><div class="ol-overlaycontainer"></div><div class="ol-overlaycontainer-stopevent"><div class="ol-zoom ol-unselectable ol-control"><button class="ol-zoom-in" type="button" title="Zoom in">+</button><button class="ol-zoom-out" type="button" title="Zoom out">−</button></div><div class="ol-rotate ol-unselectable ol-control ol-hidden"><button class="ol-rotate-reset" type="button" title="Reset rotation"><span class="ol-compass" style="transform: rotate(0rad);">⇧</span></button></div><div class="ol-attribution ol-unselectable ol-control ol-collapsed"><ul><li style=""><a href="http://openlayers.org/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAHGAAABxgEXwfpGAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAhNQTFRF////AP//AICAgP//AFVVQECA////K1VVSbbbYL/fJ05idsTYJFtbbcjbJllmZszWWMTOIFhoHlNiZszTa9DdUcHNHlNlV8XRIVdiasrUHlZjIVZjaMnVH1RlIFRkH1RkH1ZlasvYasvXVsPQH1VkacnVa8vWIVZjIFRjVMPQa8rXIVVkXsXRsNveIFVkIFZlIVVj3eDeh6GmbMvXH1ZkIFRka8rWbMvXIFVkIFVjIFVkbMvWH1VjbMvWIFVlbcvWIFVla8vVIFVkbMvWbMvVH1VkbMvWIFVlbcvWIFVkbcvVbMvWjNPbIFVkU8LPwMzNIFVkbczWIFVkbsvWbMvXIFVkRnB8bcvW2+TkW8XRIFVkIlZlJVloJlpoKlxrLl9tMmJwOWd0Omh1RXF8TneCT3iDUHiDU8LPVMLPVcLPVcPQVsPPVsPQV8PQWMTQWsTQW8TQXMXSXsXRX4SNX8bSYMfTYcfTYsfTY8jUZcfSZsnUaIqTacrVasrVa8jTa8rWbI2VbMvWbcvWdJObdcvUdszUd8vVeJaee87Yfc3WgJyjhqGnitDYjaarldPZnrK2oNbborW5o9bbo9fbpLa6q9ndrL3ArtndscDDutzfu8fJwN7gwt7gxc/QyuHhy+HizeHi0NfX0+Pj19zb1+Tj2uXk29/e3uLg3+Lh3+bl4uXj4ufl4+fl5Ofl5ufl5ujm5+jmySDnBAAAAFp0Uk5TAAECAgMEBAYHCA0NDg4UGRogIiMmKSssLzU7PkJJT1JTVFliY2hrdHZ3foSFhYeJjY2QkpugqbG1tre5w8zQ09XY3uXn6+zx8vT09vf4+Pj5+fr6/P39/f3+gz7SsAAAAVVJREFUOMtjYKA7EBDnwCPLrObS1BRiLoJLnte6CQy8FLHLCzs2QUG4FjZ5GbcmBDDjxJBXDWxCBrb8aM4zbkIDzpLYnAcE9VXlJSWlZRU13koIeW57mGx5XjoMZEUqwxWYQaQbSzLSkYGfKFSe0QMsX5WbjgY0YS4MBplemI4BdGBW+DQ11eZiymfqQuXZIjqwyadPNoSZ4L+0FVM6e+oGI6g8a9iKNT3o8kVzNkzRg5lgl7p4wyRUL9Yt2jAxVh6mQCogae6GmflI8p0r13VFWTHBQ0rWPW7ahgWVcPm+9cuLoyy4kCJDzCm6d8PSFoh0zvQNC5OjDJhQopPPJqph1doJBUD5tnkbZiUEqaCnB3bTqLTFG1bPn71kw4b+GFdpLElKIzRxxgYgWNYc5SCENVHKeUaltHdXx0dZ8uBI1hJ2UUDgq82CM2MwKeibqAvSO7MCABq0wXEPiqWEAAAAAElFTkSuQmCC"></a></li><li><a href="http://www.goo.ne.jp/" target="_blank">ラスタ地図</a></li><li style="display: none;">© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</li><li style="display: none;"><a href="http://portal.cyberjapan.jp/help/termsofuse.html" target="_blank">国土地理院</a></li></ul><button type="button" title="Attributions"><span>i</span></button></div></div></div></div>
+		</div>
+		<div style="position:absolute; float:left; top:570px;">
+			<a href="./OpenLayers_SampleMap.html#"><img id="map-change-icon" src="./OpenLayers SampleMap_files/ic_panorama_black_24dp.png" title="OSM"></a>
+		</div>
+	
+
+</body></html>
