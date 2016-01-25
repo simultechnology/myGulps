@@ -1,6 +1,6 @@
 .idea
 myGulps.iml
 
-dest
+dist
 
 node_modules

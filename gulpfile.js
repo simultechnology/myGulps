@@ -9,19 +9,18 @@ gulp.task('watch', ['copy'], function() {
 gulp.task('copy', function() {
   //src/jsディレクトリ以下のファイルをコピー
   return gulp.src('src/**')
-    .pipe(gulp.dest('dest'));
+    .pipe(gulp.dest('dist'));
 
 });
 
-
 gulp.task('webserver', ['watch'], function() {
-  gulp.src('dest')
+  gulp.src('dist')
     .pipe(webserver({
       port: 15555,
       livereload: true,
       directoryListing: {
         enabled: true,
-        path: 'dest'
+        path: 'dist'
       },
       open: true
     }));
