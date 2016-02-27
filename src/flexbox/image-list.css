@@ -1,0 +1,19 @@
+
+.media {
+  display: flex;
+  margin-bottom: 1em;
+  align-items: flex-start;
+}
+
+.media img {
+  margin: 0 1em;
+  width: 100px;
+}
+
+.media p {
+  margin: 0;
+}
+
+.media-reverse {
+  flex-direction: row-reverse;
+}
