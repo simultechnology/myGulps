@@ -1,11 +1,13 @@
 
 body {
-  background: slategray;
+  /*background: slategray;*/
 }
 
 #eyecatch {
-  background: url("../img/eyecatch.jpg") no-repeat;
+  background: url('../img/eyecatch.jpg') no-repeat;
   background-size: cover;
+  background-position: 50% 20%;
+  height: 100px;
 }
 
 header {
@@ -16,12 +18,245 @@ main {
   background: skyblue;
 }
 
+#left {
+  background: limegreen;
+  float: left;
+  width: 200px;
+}
+
+#right {
+  background: lightgreen;
+  float: left;
+  width: 300px;
+}
+
+#left2 {
+  background: limegreen;
+  float: left;
+  width: 180px;
+  margin-right: 20px;
+}
+
+#right2 {
+  background: lightgreen;
+  float: left;
+  width: 300px;
+}
+#left3 {
+  background: limegreen;
+  float: left;
+  width: 180px;
+}
+
+#right3 {
+  background: lightgreen;
+  float: right;
+  width: 300px;
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.clear {
+  overflow: hidden;
+}
+
 footer {
-  /*background: slategray;*/
+  clear: both;
+  background: slategray;
 }
 
 .container {
   width: 500px;
   margin: 0 auto;
   /*background: pink;*/
+}
+
+.container > div {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 3 Column */
+
+#left-3 {
+  background: limegreen;
+  float: left;
+  width: 100px;
+  margin-right: 10px;
+}
+
+#center-3 {
+  background: seagreen;
+  float: left;
+  width: 280px;
+}
+
+#right-3 {
+  background: lightgreen;
+  float: right;
+  width: 100px;
+}
+
+/* 可変幅 */
+
+#left-3-var-width {
+  background: limegreen;
+  float: left;
+  width: 20%;
+}
+
+#center-3-var-width {
+  background: seagreen;
+  float: left;
+  width: 60%;
+}
+
+#right-3-var-width {
+  background: lightgreen;
+  float: right;
+  width: 20%;
+}
+
+#left-3-var-width2 {
+  background: limegreen;
+  float: left;
+  width: 100px;
+}
+
+#center-3-var-width2 {
+  background: seagreen;
+  float: left;
+  width: calc(100% - 200px)
+}
+
+#right-3-var-width2 {
+  background: lightgreen;
+  float: right;
+  width: 100px;
+}
+
+#left-3-var-width3 {
+  background: limegreen;
+  float: left;
+  width: 100px;
+}
+
+#center-3-var-width3 {
+  background: seagreen;
+  margin: 0 100px;
+}
+
+#right-3-var-width3 {
+  background: lightgreen;
+  float: right;
+  width: 100px;
+}
+
+/* 再度2Column */
+
+#left-2-var-width {
+  background: limegreen;
+  float: left;
+  width: 100px;
+}
+
+#right-2-var-width {
+  background: lightgreen;
+  margin-left: 100px;
+}
+
+/* menu */
+
+ul#menu {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  font-size: 0;
+}
+
+ul#menu > li {
+  display: inline-block;
+}
+
+ul#menu > li > a {
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  background: orange;
+  font-size: 16px;text-decoration: none;
+  text-align: center;
+  line-height: 40px;
+}
+ul#menu > li > a:hover {
+  opacity: 0.5;
+  transition: 0.8s;
+}
+
+/* positionサンプル */
+
+.product-container {
+  width: 500px;
+  margin: 0 auto;
+  /*background: pink;*/
+}
+
+.main-product {
+  padding: 15px 0;
+}
+
+.product {
+  position: relative;
+  display: inline-block;
+}
+
+.price {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 10px;
+  padding: 4px;
+  font-weight: bold;
+  background: #fff;
+}
+
+/* 画像付きリスト */
+
+.main-image-list {
+  background: skyblue;
+  padding: 15px 0;
+}
+
+ul#lessons {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul#lessons h2, ul#lessons p {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+.lesson_img {
+  float: left;
+  width: 50px;
+}
+
+.lesson_info {
+  float: right;
+  width: 440px;
+}
+#lessons li {
+  overflow: hidden;
+}
+
+#lessons li:not(:last-child) {
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
