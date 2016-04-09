@@ -1,0 +1,51 @@
+
+html {
+  font-size: 32px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+span {
+  font-size: 0.5em;
+}
+
+.rem-test h1 {
+  font-size: 2rem;
+}
+
+.rem-test span {
+  font-size: 0.5rem;
+}
+
+#color-container > div {
+  width: 100px;
+  height: 50px;
+}
+
+#box1 {
+  background: rgb(255, 100, 100);
+}
+
+#box2 {
+  background: rgba(255, 100, 100, .2);
+}
+
+#box3 {
+  background: hsla(210, 100%, 50%, .7);
+}
+
+#box4 {
+  background: hsla(210, 100%, 40%, .7);
+}
+
+.opacity-container {
+  width: 100%;
+  background: skyblue;
+}
+
+.opacity-container img {
+  border: 7px solid blue;
+  opacity: 0.3;
+}

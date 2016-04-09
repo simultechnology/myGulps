@@ -1,0 +1,67 @@
+
+a[href^="http"] {
+  color: orange;
+}
+
+a[href$=".com"] {
+  color: green;
+}
+
+a[href*=".co.jp"] {
+  color: yellow;
+}
+
+li:last-child {
+  background: violet;
+}
+
+li:nth-child(7) {
+  background: chocolate;
+}
+
+li:nth-child(even) {
+  background: darkred;
+}
+li:nth-child(4n - 3) {
+  background: yellowgreen;
+}
+
+li:nth-last-child(3n) {
+  background: yellow;
+}
+
+section p:first-of-type {
+  background: rebeccapurple;
+}
+
+section p:last-of-type {
+  background: red;
+}
+
+section p:nth-of-type(3) {
+  background: mediumblue;
+}
+
+section p:nth-last-of-type(2) {
+  background: lightpink;
+}
+
+h2:only-of-type {
+  background: green;
+}
+
+.pseudo-class-container li:not(.target) {
+  background: mediumpurple;
+}
+
+.pseudo-class-container li:empty {
+  background: goldenrod;
+}
+
+input[type="text"]:enabled {
+  background: cornsilk;
+}
+
+input[type="checkbox"]:checked + label {
+  background: moccasin;
+}
