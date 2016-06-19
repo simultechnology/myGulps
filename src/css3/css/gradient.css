@@ -1,0 +1,51 @@
+
+section {
+  clear: both;
+}
+
+.linear-container div, .radial-container div {
+  width: 200px;
+  height: 200px;
+  float: left;
+  margin: 10px;
+}
+
+.first {
+  background-image: linear-gradient(skyblue, blue);
+}
+
+.second {
+  background-image: linear-gradient(to top left, skyblue, blue);
+}
+
+.third {
+  background-image: linear-gradient(45deg, skyblue, blue);
+}
+
+.forth {
+  background-image: linear-gradient(lightgreen 10%, skyblue 70%, blue);
+}
+
+.fifth {
+  background-image: repeating-linear-gradient(lightgreen, skyblue 20px);
+}
+
+.sixth {
+  background-image: radial-gradient(skyblue, blue);
+}
+
+.seventh {
+  background-image: radial-gradient(at 30px 40px, skyblue, blue);
+}
+
+.eighth {
+  background-image: radial-gradient(ellipse 20px 30px at 30px 40px, skyblue, blue);
+}
+
+.ninth {
+  background-image: radial-gradient(circle 20px at 30px 40px, skyblue, blue);
+}
+
+.tenth {
+  background-image: repeating-radial-gradient(skyblue, blue 20px);
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>乗鞍・上高地旅行</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header></header>
+  <section>
+    <div id="main">
+      <div class="main-container">
+        <div class="title">乗鞍・上高地旅行</div>
+        <hr>
+        <div class="sub-title">
+          2016GW 4.29 to 4.30 taka & ayu
+        </div>
+      </div>
+    </div>
+    <div class="items">
+      <div class="box" idx="1"><img src="images/1.jpg"></div>
+      <div class="box" idx="2"><img src="images/2.jpg"></div>
+      <div class="box" idx="3"><img src="images/3.jpg"></div>
+      <div class="box" idx="4"><img src="images/4.jpg"></div>
+      <div class="box" idx="5"><img src="images/5.jpg"></div>
+      <div class="box"><img src="images/6.jpg"></div>
+      <div class="box"><img src="images/7.jpg"></div>
+      <div class="box"><img src="images/8.jpg"></div>
+      <div class="box"><img src="images/9.jpg"></div>
+      <div class="box"><img src="images/10.jpg"></div>
+      <div class="box"><img src="images/11.jpg"></div>
+      <div class="box"><img src="images/12.jpg"></div>
+    </div>
+    <div class="map-container">
+      <div id="map"></div>
+    </div>
+  </section>
+  <footer></footer>
+  <script>
+    function initMap() {
+      var mapDiv = document.getElementById('map');
+      var map = new google.maps.Map(mapDiv, {
+        center: {lat: 36.257334, lng: 137.683777},
+        zoom: 11
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+          async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script>
+    var enter = false, leave = false;
+    $('.items .box').on({
+      'mouseenter': function () {
+
+        if (enter) {
+          return;
+        } else {
+          enter = true;
+        }
+
+        var hide = false, insert = false;
+        $('.items .box').each(function (i, box) {
+          var idx = $(box).attr('idx');
+          if (idx && Number(idx) === i + 1) {
+            hide = true;
+            insert = true;
+          } else {
+            insert = false;
+          }
+          if (insert) {
+            $(this).after('<div id="after-box" style="display: none;">aaaaaaa</div>');
+            $('#after-box').fadeIn('slow');
+          } else if (hide) {
+            $(this).hide();
+            $(this).fadeIn('slow');
+          }
+        });
+      },
+      'mouseleave': function () {
+
+        if (!enter) {
+          return;
+        } else {
+          enter = false;
+        }
+
+        $('#after-box').fadeOut('slow', function () {
+          $(this).remove();
+        });
+        var hide = false, insert = false;
+        $('.items .box').each(function (i, box) {
+          var idx = $(box).attr('idx');
+          if (idx && Number(idx) === i + 1) {
+            hide = true;
+            insert = true;
+          } else {
+            insert = false;
+          }
+          if (!insert && hide) {
+            $(this).hide();
+            $(this).fadeIn('slow');
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
