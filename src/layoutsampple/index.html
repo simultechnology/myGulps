@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>A</th>
+        <th>B</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>aaa</td>
+        <td>
+          <input id="input" type="text">
+          <button>送信</button>
+          <button>更新</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    $('#input').on('keyup', function () {
+      console.log($(this).val());
+    });
+  </script>
+</body>
+</html>
